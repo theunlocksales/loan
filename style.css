@@ -1226,7 +1226,7 @@ body {
 .testimonials-track {
     display: flex;
     gap: 30px;
-    animation: scrollTestimonials 10s linear infinite;
+    animation: scrollTestimonials 90s linear infinite;
 }
 
 @keyframes scrollTestimonials {
@@ -1978,3 +1978,4 @@ img {
 }
 
 /* ==================== END OF CSS ==================== */
+

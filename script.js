@@ -1,39 +1,129 @@
-// ==================== SM FINANCE - IMPROVED PREMIUM JAVASCRIPT ====================
+// ==================== SM FINANCE - FULLY MOBILE RESPONSIVE JAVASCRIPT ====================
 
 let currentLanguage = 'en';
 
-// ==================== 30 UNIQUE TESTIMONIALS DATA ====================
-const testimonials = [
-    { name: "Rajesh Kumar", location: "Indore", text: "Got home loan at 6.5% interest! Saved ₹5 lakhs compared to other banks. Shailendra Sir is truly an expert!" },
-    { name: "Priya Sharma", location: "Vijay Nagar", text: "Best loan consultant in Indore! Got lowest interest rate and quick approval within 2 days!" },
-    { name: "Amit Patel", location: "Indore", text: "Balance transfer saved me ₹3 lakhs! Thank you SM Finance for the lowest rate!" },
-    { name: "Neha Gupta", location: "Palasia", text: "Professional service and transparent process. Got my mortgage loan at unbeatable rates!" },
-    { name: "Sandeep Verma", location: "Bhanwarkuan", text: "20 years of experience truly shows! Best guidance for home loan. Highly recommended!" },
-    { name: "Anjali Singh", location: "Scheme 78", text: "Shailendra Sir helped me get property loan with lowest EMI. Very satisfied!" },
-    { name: "Vikram Malhotra", location: "Indore", text: "Quick processing and excellent support. Got home loan approved in 48 hours!" },
-    { name: "Pooja Jain", location: "Vijay Nagar", text: "Trustworthy and reliable service! Saved thousands on interest rate. Thank you!" },
-    { name: "Rahul Agarwal", location: "Indore", text: "Best mortgage loan rates in Indore. Professional and helpful throughout the process!" },
-    { name: "Kavita Desai", location: "Palasia", text: "Excellent experience! Balance transfer reduced my EMI significantly. Grateful to SM Finance!" },
-    { name: "Manish Sharma", location: "Indore", text: "Got the lowest interest rate for home loan. Shailendra Sir is very knowledgeable!" },
-    { name: "Deepika Patel", location: "Vijay Nagar", text: "Fast approval and best rates! Highly recommend SM Finance for all loan needs!" },
-    { name: "Arjun Mehta", location: "Indore", text: "Professional service from start to finish. Got property loan at amazing rates!" },
-    { name: "Sonia Kapoor", location: "Scheme 78", text: "Transparent process and no hidden charges. Very happy with the service!" },
-    { name: "Rohit Gupta", location: "Indore", text: "Balance transfer helped me save ₹4 lakhs over loan tenure. Excellent advice!" },
-    { name: "Madhuri Joshi", location: "Bhanwarkuan", text: "Best home loan consultant in Indore! Quick processing and lowest rates guaranteed!" },
-    { name: "Anil Kumar", location: "Indore", text: "20+ years experience clearly visible in the service quality. Very satisfied!" },
-    { name: "Ritu Singh", location: "Vijay Nagar", text: "Got mortgage loan within 3 days at lowest interest rate. Thank you SM Finance!" },
-    { name: "Suresh Patel", location: "Indore", text: "Professional guidance and best loan options. Saved lakhs on interest!" },
-    { name: "Meera Sharma", location: "Palasia", text: "Excellent service! Balance transfer was smooth and saved me a lot of money!" },
-    { name: "Karan Verma", location: "Indore", text: "Best property loan rates in town! Shailendra Sir provided expert guidance!" },
-    { name: "Nisha Agarwal", location: "Scheme 78", text: "Quick home loan approval and transparent process. Highly recommend!" },
-    { name: "Varun Malhotra", location: "Indore", text: "Got the lowest EMI possible! Very professional and helpful service!" },
-    { name: "Swati Jain", location: "Vijay Nagar", text: "Mortgage loan at best rates! Shailendra Sir is truly an expert in his field!" },
-    { name: "Ashish Desai", location: "Indore", text: "Saved ₹6 lakhs with balance transfer. Excellent service from SM Finance!" },
-    { name: "Preeti Kapoor", location: "Bhanwarkuan", text: "Fast processing and lowest rates! Got home loan without any hassle!" },
-    { name: "Gaurav Singh", location: "Indore", text: "Professional and trustworthy! Property loan approved quickly at best rates!" },
-    { name: "Divya Patel", location: "Palasia", text: "Amazing experience! Lowest interest rate and transparent process throughout!" },
-    { name: "Mohit Sharma", location: "Indore", text: "Best loan consultant! Helped me save lakhs with smart balance transfer!" },
-    { name: "Shweta Gupta", location: "Vijay Nagar", text: "Quick home loan approval and excellent rates! Highly satisfied with the service!" }
+// ==================== 30 UNIQUE TESTIMONIALS (ENGLISH & HINDI) ====================
+const testimonialsData = [
+    {
+        en: { name: "Rajesh Kumar", location: "Indore", text: "Excellent service! Shailendra Sir helped me get home loan with great terms. Very professional and trustworthy!" },
+        hi: { name: "राजेश कुमार", location: "इंदौर", text: "बेहतरीन सेवा! शैलेंद्र सर ने मुझे बेहतरीन शर्तों के साथ होम लोन दिलाने में मदद की। बहुत पेशेवर और भरोसेमंद!" }
+    },
+    {
+        en: { name: "Priya Sharma", location: "Vijay Nagar", text: "Best loan consultant in Indore! Quick approval and transparent process. Highly recommend!" },
+        hi: { name: "प्रिया शर्मा", location: "विजय नगर", text: "इंदौर में सर्वश्रेष्ठ लोन सलाहकार! त्वरित अनुमोदन और पारदर्शी प्रक्रिया। अत्यधिक अनुशंसित!" }
+    },
+    {
+        en: { name: "Amit Patel", location: "Indore", text: "Thank you SM Finance for helping with balance transfer. Saved a lot on interest!" },
+        hi: { name: "अमित पटेल", location: "इंदौर", text: "बैलेंस ट्रांसफर में मदद के लिए SM Finance का धन्यवाद। ब्याज पर बहुत बचत हुई!" }
+    },
+    {
+        en: { name: "Neha Gupta", location: "Palasia", text: "Professional service and personal attention. Got my mortgage loan approved quickly!" },
+        hi: { name: "नेहा गुप्ता", location: "पलासिया", text: "पेशेवर सेवा और व्यक्तिगत ध्यान। मेरा मॉर्गेज लोन जल्दी स्वीकृत हो गया!" }
+    },
+    {
+        en: { name: "Sandeep Verma", location: "Bhanwarkuan", text: "20 years of experience shows! Best guidance for home loan. Very satisfied!" },
+        hi: { name: "संदीप वर्मा", location: "भंवरकुंआ", text: "20 साल का अनुभव दिखता है! होम लोन के लिए सर्वोत्तम मार्गदर्शन। बहुत संतुष्ट!" }
+    },
+    {
+        en: { name: "Anjali Singh", location: "Scheme 78", text: "Helped me understand all loan options clearly. Very patient and knowledgeable!" },
+        hi: { name: "अंजलि सिंह", location: "स्कीम 78", text: "मुझे सभी ऋण विकल्पों को स्पष्ट रूप से समझने में मदद की। बहुत धैर्यवान और जानकार!" }
+    },
+    {
+        en: { name: "Vikram Malhotra", location: "Indore", text: "Quick processing and excellent support. Got home loan approved in 48 hours!" },
+        hi: { name: "विक्रम मल्होत्रा", location: "इंदौर", text: "त्वरित प्रसंस्करण और उत्कृष्ट समर्थन। 48 घंटे में होम लोन स्वीकृत हो गया!" }
+    },
+    {
+        en: { name: "Pooja Jain", location: "Vijay Nagar", text: "Trustworthy and reliable service! Always available to answer questions. Thank you!" },
+        hi: { name: "पूजा जैन", location: "विजय नगर", text: "भरोसेमंद और विश्वसनीय सेवा! प्रश्नों के उत्तर देने के लिए हमेशा उपलब्ध। धन्यवाद!" }
+    },
+    {
+        en: { name: "Rahul Agarwal", location: "Indore", text: "Best experience with mortgage loan. Professional throughout the process!" },
+        hi: { name: "राहुल अग्रवाल", location: "इंदौर", text: "मॉर्गेज लोन के साथ सर्वोत्तम अनुभव। पूरी प्रक्रिया में पेशेवर!" }
+    },
+    {
+        en: { name: "Kavita Desai", location: "Palasia", text: "Excellent experience! Balance transfer reduced my EMI significantly. Grateful!" },
+        hi: { name: "कविता देसाई", location: "पलासिया", text: "उत्कृष्ट अनुभव! बैलेंस ट्रांसफर ने मेरी EMI काफी कम कर दी। आभारी हूं!" }
+    },
+    {
+        en: { name: "Manish Sharma", location: "Indore", text: "Got competitive rates for home loan. Shailendra Sir is very knowledgeable!" },
+        hi: { name: "मनीष शर्मा", location: "इंदौर", text: "होम लोन के लिए प्रतिस्पर्धी दरें मिलीं। शैलेंद्र सर बहुत जानकार हैं!" }
+    },
+    {
+        en: { name: "Deepika Patel", location: "Vijay Nagar", text: "Fast approval and transparent process! Highly recommend SM Finance!" },
+        hi: { name: "दीपिका पटेल", location: "विजय नगर", text: "तेज़ अनुमोदन और पारदर्शी प्रक्रिया! SM Finance की अत्यधिक अनुशंसा करती हूं!" }
+    },
+    {
+        en: { name: "Arjun Mehta", location: "Indore", text: "Professional service from start to finish. Got property loan with great terms!" },
+        hi: { name: "अर्जुन मेहता", location: "इंदौर", text: "शुरू से अंत तक पेशेवर सेवा। बेहतरीन शर्तों के साथ प्रॉपर्टी लोन मिला!" }
+    },
+    {
+        en: { name: "Sonia Kapoor", location: "Scheme 78", text: "Transparent process and no hidden charges. Very happy with the service!" },
+        hi: { name: "सोनिया कपूर", location: "स्कीम 78", text: "पारदर्शी प्रक्रिया और कोई छिपे हुए शुल्क नहीं। सेवा से बहुत खुश!" }
+    },
+    {
+        en: { name: "Rohit Gupta", location: "Indore", text: "Balance transfer helped me save significantly. Excellent advice and support!" },
+        hi: { name: "रोहित गुप्ता", location: "इंदौर", text: "बैलेंस ट्रांसफर ने मुझे काफी बचत करने में मदद की। उत्कृष्ट सलाह और समर्थन!" }
+    },
+    {
+        en: { name: "Madhuri Joshi", location: "Bhanwarkuan", text: "Best home loan consultant in Indore! Quick processing and great rates!" },
+        hi: { name: "माधुरी जोशी", location: "भंवरकुंआ", text: "इंदौर में सर्वश्रेष्ठ होम लोन सलाहकार! त्वरित प्रसंस्करण और बेहतरीन दरें!" }
+    },
+    {
+        en: { name: "Anil Kumar", location: "Indore", text: "20+ years experience clearly visible. Very professional and helpful!" },
+        hi: { name: "अनिल कुमार", location: "इंदौर", text: "20+ साल का अनुभव स्पष्ट रूप से दिखता है। बहुत पेशेवर और सहायक!" }
+    },
+    {
+        en: { name: "Ritu Singh", location: "Vijay Nagar", text: "Got mortgage loan within 3 days. Fast and efficient service. Thank you!" },
+        hi: { name: "रितु सिंह", location: "विजय नगर", text: "3 दिनों में मॉर्गेज लोन मिल गया। तेज़ और कुशल सेवा। धन्यवाद!" }
+    },
+    {
+        en: { name: "Suresh Patel", location: "Indore", text: "Professional guidance and best loan options. Saved a lot with competitive rates!" },
+        hi: { name: "सुरेश पटेल", location: "इंदौर", text: "पेशेवर मार्गदर्शन और सर्वोत्तम ऋण विकल्प। प्रतिस्पर्धी दरों से बहुत बचत!" }
+    },
+    {
+        en: { name: "Meera Sharma", location: "Palasia", text: "Excellent service! Balance transfer was smooth and hassle-free!" },
+        hi: { name: "मीरा शर्मा", location: "पलासिया", text: "उत्कृष्ट सेवा! बैलेंस ट्रांसफर सुगम और परेशानी मुक्त था!" }
+    },
+    {
+        en: { name: "Karan Verma", location: "Indore", text: "Best property loan rates! Shailendra Sir provided expert guidance throughout!" },
+        hi: { name: "करण वर्मा", location: "इंदौर", text: "सर्वोत्तम प्रॉपर्टी लोन दरें! शैलेंद्र सर ने पूरे समय विशेषज्ञ मार्गदर्शन प्रदान किया!" }
+    },
+    {
+        en: { name: "Nisha Agarwal", location: "Scheme 78", text: "Quick home loan approval and transparent process. Highly recommend!" },
+        hi: { name: "निशा अग्रवाल", location: "स्कीम 78", text: "त्वरित होम लोन अनुमोदन और पारदर्शी प्रक्रिया। अत्यधिक अनुशंसित!" }
+    },
+    {
+        en: { name: "Varun Malhotra", location: "Indore", text: "Got the best EMI terms! Very professional and helpful service!" },
+        hi: { name: "वरुण मल्होत्रा", location: "इंदौर", text: "सर्वोत्तम EMI शर्तें मिलीं! बहुत पेशेवर और सहायक सेवा!" }
+    },
+    {
+        en: { name: "Swati Jain", location: "Vijay Nagar", text: "Mortgage loan with great terms! Shailendra Sir is truly an expert!" },
+        hi: { name: "स्वाति जैन", location: "विजय नगर", text: "बेहतरीन शर्तों के साथ मॉर्गेज लोन! शैलेंद्र सर वास्तव में एक विशेषज्ञ हैं!" }
+    },
+    {
+        en: { name: "Ashish Desai", location: "Indore", text: "Saved significantly with balance transfer. Excellent service from SM Finance!" },
+        hi: { name: "आशीष देसाई", location: "इंदौर", text: "बैलेंस ट्रांसफर से काफी बचत हुई। SM Finance से उत्कृष्ट सेवा!" }
+    },
+    {
+        en: { name: "Preeti Kapoor", location: "Bhanwarkuan", text: "Fast processing and great support! Got home loan without any hassle!" },
+        hi: { name: "प्रीति कपूर", location: "भंवरकुंआ", text: "तेज़ प्रसंस्करण और बेहतरीन समर्थन! बिना किसी परेशानी के होम लोन मिला!" }
+    },
+    {
+        en: { name: "Gaurav Singh", location: "Indore", text: "Professional and trustworthy! Property loan approved quickly with best rates!" },
+        hi: { name: "गौरव सिंह", location: "इंदौर", text: "पेशेवर और भरोसेमंद! सर्वोत्तम दरों के साथ प्रॉपर्टी लोन जल्दी स्वीकृत!" }
+    },
+    {
+        en: { name: "Divya Patel", location: "Palasia", text: "Amazing experience! Competitive rates and transparent process throughout!" },
+        hi: { name: "दिव्या पटेल", location: "पलासिया", text: "अद्भुत अनुभव! पूरे समय प्रतिस्पर्धी दरें और पारदर्शी प्रक्रिया!" }
+    },
+    {
+        en: { name: "Mohit Sharma", location: "Indore", text: "Best loan consultant! Helped me with smart balance transfer and saved money!" },
+        hi: { name: "मोहित शर्मा", location: "इंदौर", text: "सर्वश्रेष्ठ लोन सलाहकार! स्मार्ट बैलेंस ट्रांसफर से मदद की और पैसे बचाए!" }
+    },
+    {
+        en: { name: "Shweta Gupta", location: "Vijay Nagar", text: "Quick home loan approval and excellent service! Highly satisfied with SM Finance!" },
+        hi: { name: "श्वेता गुप्ता", location: "विजय नगर", text: "त्वरित होम लोन अनुमोदन और उत्कृष्ट सेवा! SM Finance से अत्यधिक संतुष्ट!" }
+    }
 ];
 
 // ==================== PRELOADER ====================
@@ -56,9 +146,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScroll();
     initScrollProgress();
     
-    console.log('🏦 SM Finance - Ultra Premium Website Loaded!');
+    console.log('🏦 SM Finance - Fully Mobile Responsive Website Loaded!');
     console.log('📞 Contact: +91 97549 34499');
-    console.log('💼 Lowest Interest Rates Guaranteed!');
+    console.log('🌐 Bilingual: English & हिंदी Support');
 });
 
 // ==================== NAVIGATION ====================
@@ -120,9 +210,8 @@ function initNavigation() {
     sections.forEach(section => observer.observe(section));
 }
 
-// ==================== LANGUAGE TOGGLE ====================
+// ==================== LANGUAGE TOGGLE WITH TESTIMONIALS UPDATE ====================
 function initLanguageToggle() {
-    const languageToggle = document.getElementById('languageToggle');
     const langButtons = document.querySelectorAll('.lang-btn');
     
     langButtons.forEach(btn => {
@@ -133,6 +222,7 @@ function initLanguageToggle() {
                 langButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 updateLanguage(lang);
+                updateTestimonials(lang); // Update testimonials when language changes
                 localStorage.setItem('preferredLanguage', lang);
             }
         });
@@ -224,14 +314,22 @@ function initCounters() {
     });
 }
 
-// ==================== ENDLESS TESTIMONIALS SLIDER (30 REVIEWS) ====================
+// ==================== ENDLESS TESTIMONIALS SLIDER (30 REVIEWS WITH HINDI) ====================
 function initTestimonialsSlider() {
     const track = document.getElementById('testimonialsTrack');
     if (!track) return;
     
-    // Create testimonial cards
+    updateTestimonials(currentLanguage);
+    console.log('✅ 30 testimonials loaded with Hindi support!');
+}
+
+function updateTestimonials(lang) {
+    const track = document.getElementById('testimonialsTrack');
+    if (!track) return;
+    
     let html = '';
-    testimonials.forEach(testimonial => {
+    testimonialsData.forEach(testimonial => {
+        const data = testimonial[lang];
         html += `
             <div class="testimonial-card">
                 <div class="stars">
@@ -241,17 +339,15 @@ function initTestimonialsSlider() {
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <p>${testimonial.text}</p>
-                <h4>${testimonial.name}</h4>
-                <span>${testimonial.location}</span>
+                <p>${data.text}</p>
+                <h4>${data.name}</h4>
+                <span>${data.location}</span>
             </div>
         `;
     });
     
     // Duplicate for endless effect
     track.innerHTML = html + html;
-    
-    console.log('✅ 30 testimonials loaded and sliding endlessly!');
 }
 
 // ==================== CONTACT FORM ====================
@@ -276,7 +372,7 @@ function initContactForm() {
             const whatsappURL = `https://api.whatsapp.com/send?phone=919754934499&text=${encodeURIComponent(whatsappMessage)}`;
             window.open(whatsappURL, '_blank');
             
-            showNotification('✅ पूछताछ भेजी गई! / Inquiry sent! We\'ll contact you within 30 minutes.', 'success');
+            showNotification('✅ पूछताछ भेजी गई! / Inquiry sent! We\'ll contact you within 24 hours.', 'success');
             contactForm.reset();
             trackEvent('form_submission', { loan_type: loanType });
         });
@@ -310,7 +406,6 @@ function createWhatsAppMessage(name, phone, loanType, message) {
         msg += `*संदेश / Message:* ${message}\n`;
     }
     msg += `\n_SM Finance Website से भेजा गया / Sent from SM Finance Website_`;
-    msg += `\n_📉 न्यूनतम ब्याज दर की गारंटी / Lowest Interest Rate Guaranteed_`;
     return msg;
 }
 
@@ -418,7 +513,6 @@ document.addEventListener('DOMContentLoaded', () => {
     whatsappButtons.forEach((btn) => {
         btn.addEventListener('click', function() {
             const source = this.classList.contains('floating-whatsapp') ? 'Floating Button' : 
-                          this.classList.contains('btn-whatsapp-nav') ? 'Navigation' : 
                           this.classList.contains('btn-service') ? 'Service Card' : 
                           this.classList.contains('btn-primary') ? 'Hero Section' :
                           'Contact Form';
@@ -430,29 +524,9 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==================== PAGE VISIBILITY API ====================
 document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
-        document.title = '💰 कम ब्याज दर चाहिए? / Need Lowest Rate? - SM Finance';
+        document.title = '💼 Need Loan Consultation? - SM Finance';
     } else {
-        document.title = 'SM Finance | Get Loan at Lowest Interest Rates in Indore | Expert Loan Consultant';
-    }
-});
-
-// ==================== KEYBOARD SHORTCUTS ====================
-document.addEventListener('keydown', (e) => {
-    const activeElement = document.activeElement;
-    const isInput = activeElement.matches('input, textarea, select');
-    
-    if (!isInput) {
-        if (e.key === 'w' || e.key === 'W') {
-            window.open('https://wa.me/919754934499?text=Hi%2C%20I%20want%20loan%20at%20lowest%20interest%20rate', '_blank');
-        }
-        if (e.key === 'h' || e.key === 'H') {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        if (e.key === 'l' || e.key === 'L') {
-            const currentBtn = document.querySelector('.lang-btn.active');
-            const nextLang = currentBtn.getAttribute('data-lang') === 'en' ? 'hi' : 'en';
-            document.querySelector(`[data-lang="${nextLang}"]`).click();
-        }
+        document.title = 'SM Finance | Trusted Loan Consultant in Indore | Shailendra Malviya';
     }
 });
 
@@ -468,7 +542,7 @@ function trackEvent(eventName, eventData) {
 if ('ontouchstart' in window) {
     document.addEventListener('touchstart', function() {}, {passive: true});
     
-    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-service, .btn-whatsapp-nav, .btn-submit, .btn-whatsapp-form');
+    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-service, .btn-submit, .btn-whatsapp-form');
     buttons.forEach(button => {
         button.addEventListener('touchend', function(e) {
             e.preventDefault();
@@ -479,18 +553,18 @@ if ('ontouchstart' in window) {
 
 // ==================== CONSOLE BRANDING ====================
 console.log('%c🏦 SM FINANCE', 'color: #1E40AF; font-size: 48px; font-weight: 900; font-family: Poppins;');
-console.log('%c💰 Lowest Interest Rates Guaranteed', 'color: #F59E0B; font-size: 18px; font-weight: bold;');
+console.log('%c💼 Your Trusted Loan Partner', 'color: #F59E0B; font-size: 18px; font-weight: bold;');
 console.log('%c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', 'color: #1E40AF;');
 console.log('%c📞 Contact: +91 97549 34499', 'color: #10B981; font-size: 15px; font-weight: bold;');
-console.log('%c👨‍💼 Expert: Shailendra Malviya', 'color: #1E40AF; font-size: 13px; font-weight: bold;');
+console.log('%c👨‍💼 Consultant: Shailendra Malviya', 'color: #1E40AF; font-size: 13px; font-weight: bold;');
 console.log('%c🏠 Services: Home | Mortgage | Balance Transfer | Property', 'color: #1E40AF; font-size: 12px; font-weight: bold;');
 console.log('%c🌐 Languages: English & हिंदी Support', 'color: #F59E0B; font-size: 12px; font-weight: bold;');
 console.log('%c💻 Website by: The Unlock Sales (+91 8629933125)', 'color: #10B981; font-size: 11px; font-weight: bold;');
 console.log('%c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', 'color: #1E40AF;');
 
 // ==================== END OF SCRIPT ====================
-console.log('✅ All JavaScript initialized successfully!');
-console.log('🏦 SM Finance - Ultra Premium with 30 Testimonials!');
-console.log('📞 Call/WhatsApp: +91 97549 34499');
+console.log('✅ All features initialized successfully!');
+console.log('📱 100% Mobile Responsive');
 console.log('🌐 Bilingual: English & हिंदी');
-console.log('💰 Mission: Lowest Interest Rates for Everyone!');
+console.log('⭐ 30 Testimonials with Language Support');
+console.log('🎯 Focus: Trust & Long-term Relationships');

@@ -1,6 +1,8 @@
-// ==================== SM FINANCE - FULLY MOBILE RESPONSIVE JAVASCRIPT ====================
+// ==================== SM FINANCE - COMPLETE PREMIUM JAVASCRIPT ====================
 
 let currentLanguage = 'en';
+let reviewsShown = 12; // Initially show 12 reviews in grid
+const reviewsPerLoad = 6; // Load 6 more when clicking "Load More"
 
 // ==================== 30 UNIQUE TESTIMONIALS (ENGLISH & HINDI) ====================
 const testimonialsData = [
@@ -141,14 +143,15 @@ document.addEventListener('DOMContentLoaded', function() {
     initLanguageToggle();
     initAOS();
     initCounters();
-    initTestimonialsSlider();
+    initTestimonials();
     initContactForm();
     initSmoothScroll();
     initScrollProgress();
     
-    console.log('🏦 SM Finance - Fully Mobile Responsive Website Loaded!');
+    console.log('🏦 SM Finance - Premium Website Loaded!');
     console.log('📞 Contact: +91 97549 34499');
-    console.log('🌐 Bilingual: English & हिंदी Support');
+    console.log('🌐 Bilingual: English & हिंदी');
+    console.log('⭐ Featured + Grid Review Layout');
 });
 
 // ==================== NAVIGATION ====================
@@ -158,17 +161,12 @@ function initNavigation() {
     const navMenu = document.getElementById('navMenu');
     const navLinks = document.querySelectorAll('.nav-link');
     
-    let lastScroll = 0;
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > 50) {
+        if (window.pageYOffset > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-        
-        lastScroll = currentScroll;
     });
     
     if (hamburger) {
@@ -210,7 +208,7 @@ function initNavigation() {
     sections.forEach(section => observer.observe(section));
 }
 
-// ==================== LANGUAGE TOGGLE WITH TESTIMONIALS UPDATE ====================
+// ==================== LANGUAGE TOGGLE ====================
 function initLanguageToggle() {
     const langButtons = document.querySelectorAll('.lang-btn');
     
@@ -222,7 +220,7 @@ function initLanguageToggle() {
                 langButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 updateLanguage(lang);
-                updateTestimonials(lang); // Update testimonials when language changes
+                updateTestimonials(lang);
                 localStorage.setItem('preferredLanguage', lang);
             }
         });
@@ -283,11 +281,7 @@ function initCounters() {
             counter.innerText = Math.ceil(count + increment);
             setTimeout(() => countUp(counter), 10);
         } else {
-            if (target > 100) {
-                counter.innerText = target;
-            } else {
-                counter.innerText = target + '+';
-            }
+            counter.innerText = target + (target > 100 ? '' : '+');
         }
     };
     
@@ -314,24 +308,48 @@ function initCounters() {
     });
 }
 
-// ==================== ENDLESS TESTIMONIALS SLIDER (30 REVIEWS WITH HINDI) ====================
-function initTestimonialsSlider() {
-    const track = document.getElementById('testimonialsTrack');
-    if (!track) return;
+// ==================== FEATURED + GRID TESTIMONIALS ====================
+function initTestimonials() {
+    renderFeaturedReview();
+    renderReviewsGrid();
+    initLoadMoreButton();
     
-    updateTestimonials(currentLanguage);
-    console.log('✅ 30 testimonials loaded with Hindi support!');
+    console.log(`✅ Featured Review + ${testimonialsData.length} testimonials loaded!`);
 }
 
-function updateTestimonials(lang) {
-    const track = document.getElementById('testimonialsTrack');
-    if (!track) return;
+function renderFeaturedReview() {
+    const featuredReview = document.getElementById('featuredReview');
+    if (!featuredReview) return;
     
+    const lang = currentLanguage;
+    const featured = testimonialsData[0][lang]; // Use first review as featured
+    
+    featuredReview.innerHTML = `
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        <p>${featured.text}</p>
+        <h4>${featured.name}</h4>
+        <span>${featured.location}</span>
+    `;
+}
+
+function renderReviewsGrid() {
+    const reviewsGrid = document.getElementById('reviewsGrid');
+    if (!reviewsGrid) return;
+    
+    const lang = currentLanguage;
     let html = '';
-    testimonialsData.forEach(testimonial => {
-        const data = testimonial[lang];
+    
+    // Start from index 1 (skip first as it's featured), show up to reviewsShown
+    for (let i = 1; i < Math.min(reviewsShown + 1, testimonialsData.length); i++) {
+        const review = testimonialsData[i][lang];
         html += `
-            <div class="testimonial-card">
+            <div class="review-card">
                 <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -339,15 +357,52 @@ function updateTestimonials(lang) {
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <p>${data.text}</p>
-                <h4>${data.name}</h4>
-                <span>${data.location}</span>
+                <p>${review.text}</p>
+                <h4>${review.name}</h4>
+                <span>${review.location}</span>
             </div>
         `;
-    });
+    }
     
-    // Duplicate for endless effect
-    track.innerHTML = html + html;
+    reviewsGrid.innerHTML = html;
+    updateLoadMoreButton();
+}
+
+function updateTestimonials(lang) {
+    renderFeaturedReview();
+    renderReviewsGrid();
+    console.log(`🔄 Updated to ${lang} language`);
+}
+
+function initLoadMoreButton() {
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    if (!loadMoreBtn) return;
+    
+    loadMoreBtn.addEventListener('click', () => {
+        reviewsShown += reviewsPerLoad;
+        renderReviewsGrid();
+        
+        // Smooth scroll to newly loaded reviews
+        setTimeout(() => {
+            const reviewsGrid = document.getElementById('reviewsGrid');
+            const lastReview = reviewsGrid.lastElementChild;
+            if (lastReview) {
+                lastReview.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }, 100);
+    });
+}
+
+function updateLoadMoreButton() {
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    if (!loadMoreBtn) return;
+    
+    // Hide button if all reviews are shown
+    if (reviewsShown >= testimonialsData.length - 1) {
+        loadMoreBtn.style.display = 'none';
+    } else {
+        loadMoreBtn.style.display = 'inline-flex';
+    }
 }
 
 // ==================== CONTACT FORM ====================
@@ -443,7 +498,7 @@ function showNotification(message, type) {
         display: flex;
         align-items: center;
         gap: 20px;
-        animation: slideInRight 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), slideOutRight 0.5s ease 3s;
+        animation: slideInRight 0.5s ease, slideOutRight 0.5s ease 3s;
         font-family: 'Inter', sans-serif;
         font-weight: 600;
         min-width: 380px;
@@ -476,7 +531,7 @@ function initSmoothScroll() {
                 e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
-                    const offsetTop = target.offsetTop - 80;
+                    const offsetTop = target.offsetTop - 120; // Account for trust bar + nav
                     window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
@@ -541,14 +596,6 @@ function trackEvent(eventName, eventData) {
 // ==================== MOBILE TOUCH OPTIMIZATIONS ====================
 if ('ontouchstart' in window) {
     document.addEventListener('touchstart', function() {}, {passive: true});
-    
-    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-service, .btn-submit, .btn-whatsapp-form');
-    buttons.forEach(button => {
-        button.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            this.click();
-        }, {passive: false});
-    });
 }
 
 // ==================== CONSOLE BRANDING ====================
@@ -559,12 +606,13 @@ console.log('%c📞 Contact: +91 97549 34499', 'color: #10B981; font-size: 15px;
 console.log('%c👨‍💼 Consultant: Shailendra Malviya', 'color: #1E40AF; font-size: 13px; font-weight: bold;');
 console.log('%c🏠 Services: Home | Mortgage | Balance Transfer | Property', 'color: #1E40AF; font-size: 12px; font-weight: bold;');
 console.log('%c🌐 Languages: English & हिंदी Support', 'color: #F59E0B; font-size: 12px; font-weight: bold;');
+console.log('%c⭐ Review Style: Featured + Grid Layout', 'color: #10B981; font-size: 12px; font-weight: bold;');
 console.log('%c💻 Website by: The Unlock Sales (+91 8629933125)', 'color: #10B981; font-size: 11px; font-weight: bold;');
 console.log('%c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', 'color: #1E40AF;');
 
 // ==================== END OF SCRIPT ====================
 console.log('✅ All features initialized successfully!');
 console.log('📱 100% Mobile Responsive');
-console.log('🌐 Bilingual: English & हिंदी');
-console.log('⭐ 30 Testimonials with Language Support');
+console.log('🎨 Premium Design with Top Trust Bar');
+console.log('⭐ Featured + Grid Review System');
 console.log('🎯 Focus: Trust & Long-term Relationships');

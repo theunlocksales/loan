@@ -13,7 +13,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
@@ -36,12 +36,34 @@
         </div>
     </div>
 
-    <!-- NAVIGATION WITH LANGUAGE TOGGLE -->
+    <!-- TOP TRUST BADGE BAR (ANIMATED & ATTRACTIVE) -->
+    <div class="top-trust-bar" id="topTrustBar">
+        <div class="trust-bar-content">
+            <div class="trust-item">
+                <i class="fas fa-shield-check"></i>
+                <span data-en="Trusted Since 2003" data-hi="2003 से विश्वसनीय">Trusted Since 2003</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+                <i class="fas fa-users-crown"></i>
+                <span data-en="5000+ Happy Clients" data-hi="5000+ खुश ग्राहक">5000+ Happy Clients</span>
+            </div>
+            <div class="trust-divider"></div>
+            <div class="trust-item">
+                <i class="fas fa-award"></i>
+                <span data-en="20+ Years Experience" data-hi="20+ वर्षों का अनुभव">20+ Years Experience</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PREMIUM NAVIGATION -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="logo">
                 <div class="logo-wrapper">
-                    <i class="fas fa-coins"></i>
+                    <div class="logo-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
                     <div class="logo-text">
                         <span class="logo-name" data-en="SM Finance" data-hi="एसएम फाइनेंस">SM Finance</span>
                         <span class="logo-tagline" data-en="Trusted Loan Expert" data-hi="विश्वसनीय लोन विशेषज्ञ">Trusted Loan Expert</span>
@@ -76,11 +98,6 @@
         <div class="hero-bg-animation"></div>
         <div class="hero-container">
             <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
-                <div class="hero-badge">
-                    <i class="fas fa-shield-alt"></i>
-                    <span data-en="Trusted Since 2003 | 5000+ Happy Clients" data-hi="2003 से विश्वसनीय | 5000+ खुश ग्राहक">Trusted Since 2003 | 5000+ Happy Clients</span>
-                </div>
-                
                 <h1 class="hero-title">
                     <span data-en="Your Trusted Partner for" data-hi="आपका विश्वसनीय साथी">Your Trusted Partner for</span><br>
                     <span class="highlight" data-en="Home & Property Loans" data-hi="होम और प्रॉपर्टी लोन">Home & Property Loans</span>
@@ -243,12 +260,6 @@
         </div>
     </section>
 
-   
-
-
-
-
-
     <!-- SERVICES SECTION -->
     <section class="services" id="services">
         <div class="container">
@@ -355,9 +366,9 @@
         </div>
     </section>
 
-    <!-- TESTIMONIALS SECTION -->
+    <!-- NEW FEATURED + GRID TESTIMONIALS SECTION -->
     <section class="testimonials" id="testimonials">
-        <div class="container-full">
+        <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <span class="section-tag" data-en="CLIENT REVIEWS" data-hi="ग्राहक समीक्षा">CLIENT REVIEWS</span>
                 <h2 class="section-title">
@@ -365,14 +376,29 @@
                 </h2>
                 <p class="section-subtitle" data-en="Hear from families who trusted us with their loan journey" data-hi="उन परिवारों से सुनें जिन्होंने अपनी ऋण यात्रा के लिए हम पर भरोसा किया">Hear from families who trusted us with their loan journey</p>
             </div>
-            
-            <div class="testimonials-slider">
-                <div class="testimonials-track" id="testimonialsTrack">
-                    <!-- 30 Testimonials will be added by JavaScript with Hindi support -->
-                </div>
+
+            <!-- FEATURED REVIEW (LARGE) -->
+            <div class="featured-review" data-aos="fade-up" id="featuredReview">
+                <!-- JavaScript will populate this -->
+            </div>
+
+            <!-- REVIEWS GRID (12 REVIEWS) -->
+            <div class="reviews-grid" id="reviewsGrid">
+                <!-- JavaScript will populate this -->
+            </div>
+
+            <!-- LOAD MORE BUTTON -->
+            <div class="load-more-wrapper" data-aos="fade-up">
+                <button class="btn-load-more" id="loadMoreBtn">
+                    <span data-en="Show More Reviews" data-hi="अधिक समीक्षाएं दिखाएं">Show More Reviews</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
             </div>
         </div>
     </section>
+
+ 
+
 
     <!-- CONTACT SECTION -->
     <section class="contact" id="contact">
@@ -534,7 +560,7 @@
         </div>
     </footer>
 
-    <!-- FLOATING WHATSAPP (NO TEXT, ICON ONLY, NO UNDERLINE) -->
+    <!-- FLOATING WHATSAPP (ICON ONLY, NO UNDERLINE) -->
     <a href="https://wa.me/919754934499?text=Hi%2C%20I%20want%20to%20discuss%20loan%20options" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
         <span class="whatsapp-pulse"></span>
@@ -547,4 +573,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-

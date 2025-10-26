@@ -267,7 +267,28 @@ function initAOS() {
     }
 }
 
+
+
+
+
+// ==================== INSTANT STAT DISPLAY (NO COUNTING ANIMATION) ====================
+function initCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    
+    counters.forEach(counter => {
+        const target = counter.getAttribute('data-target');
+        if (target) {
+            const targetNum = parseInt(target);
+            // Display immediately without animation
+            counter.innerText = targetNum + (targetNum > 100 ? '' : '+');
+        }
+    });
+    
+    console.log('✅ Stats displayed instantly (no counting animation)');
+}
+
 /*
+
 // ==================== ANIMATED COUNTERS ====================
 function initCounters() {
     const counters = document.querySelectorAll('.stat-number');

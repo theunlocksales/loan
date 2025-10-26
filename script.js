@@ -267,6 +267,7 @@ function initAOS() {
     }
 }
 
+/*
 // ==================== ANIMATED COUNTERS ====================
 function initCounters() {
     const counters = document.querySelectorAll('.stat-number');
@@ -307,6 +308,9 @@ function initCounters() {
         }
     });
 }
+
+*/
+
 
 // ==================== FEATURED + GRID TESTIMONIALS ====================
 function initTestimonials() {
@@ -616,4 +620,5 @@ console.log('📱 100% Mobile Responsive');
 console.log('🎨 Premium Design with Top Trust Bar');
 console.log('⭐ Featured + Grid Review System');
 console.log('🎯 Focus: Trust & Long-term Relationships');
+
 
